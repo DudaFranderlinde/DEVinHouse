@@ -29,7 +29,7 @@
   }
 
 .navbar a:hover{
-    color:  black;
+    background-color:  black;
     transition: 300ms ease-in-out;
    
    
