@@ -1,0 +1,78 @@
+*{
+    background-color: rgb(181, 220, 246);
+    margin: 0;
+}
+
+.navbar {
+    background-color: rgb(109, 159, 192);
+    position: fixed; 
+    width:100%; 
+  }
+
+  .navbar img{
+    background-color: rgb(109, 159, 192);
+    margin-left: 5px;
+    padding-left: 0;
+    width: 50px;
+    height: 50px;
+}
+
+.navbar a {
+    background-color: rgb(109, 159, 192);
+    float: right;
+    display: block;
+    color: #f2f2f2;
+    margin-right: 5px;
+    padding: 14px 16px;
+    padding-right: 0;
+    text-decoration: none;
+  }
+
+.navbar a:hover{
+    color:  black;
+    transition: 300ms ease-in-out;
+   
+   
+}
+  
+h1{
+    margin-top: 50px;
+    font-family: verdana;
+    font-size: 20px;
+    color:rgb(49, 99, 132);
+    text-align: center;
+    background-image: url("paper.gif");
+    background-color: #f2f2f2;
+    height: 30px;
+}
+
+p{
+    font-size: 14px;
+    margin: 5px;
+}
+
+button{
+    border-radius: 30px;
+    border: solid black 2px;
+    padding: 0ch;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 11px;
+    width: 180px;
+    height: 180px;
+    background-image: ("pianolin.jpg");
+    background-size: cover;
+    overflow: hidden;
+   
+}
+
+   
+
+.roda{
+    background-color: rgb(49, 99, 132);
+    height: 40px;
+    margin-bottom: 0px;
+    text-align: center;
+    color: #fff;
+}
+
