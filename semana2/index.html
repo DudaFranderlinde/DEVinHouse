@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <link rel="shortcut icon" href="./Imagens/logo.png" type="image/x-png">
+    <title>Inovve</title>
+</head>
+<body>  
+    
+    <main>
+        <nav class="navSup">
+                <img src="./Imagens/logo.png"  alt="Logo Inovve"/>
+                <h1>Inovve</h1>
+                <ul>
+                    <li><a href="#evento">Eventos</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>  
+        </nav>
+
+        <h2 class="titulo">Evento em Destaque</h2>
+
+        <section class="event-destaque">
+            
+            <div class="cardImg">
+                <img src="./Imagens/show-destque.png"
+                 alt="Banner de Show">
+            </div>
+            <div class="cardInfo">
+                <p><strong>GREEN DAY</strong></p> 
+                <br>
+                <p><time datetime="2022/10/29 17:00">Dia 29 de outubro</time></p>
+                
+            </div>
+        </section>
+        <br>
+        <hr style="border-color:gray; opacity: 55%; width: 90%;">
+        <h2 id="evento" class="titulo2">Lista de Eventos</h2>
+
+        <section class="eventos">
+            <ul class="list-eventos">
+                <li class="event">
+                    <div class="card-Img">
+                        <img src="./Imagens/banner-list1.png"
+                        alt="Evento 1">
+                    </div>
+
+                    <div class="Card-info">
+                        <p><strong>AC CD</strong></p>
+                   
+                        <p>Hard Rock</p>
+                        <p><time datetime="2022/10/18 21:00">18 DE OUTUBRO</time> | 
+                        <time datetime="2022/10/19 21:00">19 DE OUTUBRO</time></p>
+                    </div>
+                    
+                </li>
+
+                <li class="event">
+                    <div class="card-Img">
+                        <img src="./Imagens/baner-teste.png"
+                        alt="">
+                    </div>
+
+                    <div class="Card-info">
+                        <p><strong>PINK FLOYD</strong></p>
+                      
+                        <p>Stage Music Park</p>
+                        <p><time datetime="2022/08/09 21:00">9 DE AGOSTO</time></p>
+                    </div>
+                </li>
+
+                <li class="event">
+                    <div class="card-Img">
+                        <img src="./Imagens/banner-list3.png"
+                        alt="">
+                    </div>
+
+                    <div class="Card-info">
+                        <p><strong>QUEEN</strong></p>
+                      
+                        <p>Arena Jaraguá</p>
+                        <p><time datetime="2022/05/26 23:00">26 DE MAIO</time></p>
+                    </div>
+                </li>
+            </ul>
+        </Section>
+
+        <hr style="border-color:gray; opacity: 55%; width: 90%;">          
+        <br>   
+        
+        <Section class="form-container">
+            <h2 class="titulo2" id="contato">Contato</h2>
+            <form action="javascript:apresentaInfo()">
+                <div class="container-input">
+                    <input type="text" id="nome" placeholder="Nome"/>
+                    <input type="text" id="email" placeholder="Email"/>      
+                </div>
+
+                <textarea name="Story" id="Descricao" cols="30" rows="10" placeholder="Descrição"></textarea>
+              
+
+                <div class="container-button">
+                    <button>Enviar</button>
+                </div>
+            </form>  
+        </Section>
+
+        <section class="container-footer">
+            <footer>
+                <div class="text">
+                    </div>
+            
+                <div class="redes">
+                    <p> Inovve &copy; Copyright 2022</p>
+                    <img id="insta" src="./Imagens/download-removebg-preview.png"
+                    alt="instagram">
+                    <img id="twitter" src="./Imagens/download-removebg-preview (1).png"
+                    alt="twitter">
+                </div>
+        </footer>
+        </section> 
+        
+
+    </main>
+    <script src="index.js"></script>
+</body>
+</html>

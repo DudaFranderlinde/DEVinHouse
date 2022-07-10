@@ -1,0 +1,222 @@
+body{
+    font-family: arial;
+    margin: 0vh;
+    color:rgb(54, 52, 52);
+    background-color: rgb(228, 186, 248);
+}
+
+.navSup{
+    position: fixed;
+    top: 0;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0.3em;
+    width: 100%;
+    height: 4.2em;
+    background-color: #3B3B3B;
+    
+}
+
+
+.navSup img{
+    width: 4em;
+}
+
+
+.navSup li{
+    margin-right: 2em;
+}
+
+.navSup a{
+    color: white;
+    font-family: arial;
+    text-decoration: none;
+    
+}
+
+/*Estilo do evento destaque*/
+
+.event-destaque{
+    display: flex;
+}
+
+.titulo{
+    margin-top: 4em;
+    margin-left: 1em;
+}
+
+.cardImg{
+    flex: 4;
+}
+
+
+.cardImg img{
+    width: 100%;
+  
+}
+
+.cardInfo{
+    flex: 2;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: black;
+    color: white;
+    padding: 18px;
+    block-size: auto;
+    
+}
+
+.cardInfo p{
+    margin: 0;
+    text-align:center ;
+    width: 100%;
+    text-decoration: none;
+}
+
+.cardInfo p:first-child{
+    font-size: 32px;
+}
+
+/* Lista de eventos */
+
+.titulo2{
+    margin-left: 1em;
+    justify-content: flex-start;
+}
+
+.list-eventos{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0%;
+    gap: 20px;
+}
+
+
+
+.event{
+    width: 30%;
+    flex-direction: column;
+}
+
+li {
+    display: inline-block;
+    margin-bottom: 0;
+   
+}
+
+
+
+.card-Img{
+    flex: 2;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    
+}
+
+.card-Img img{
+    width: 100%;
+}
+
+.Card-info{
+    flex: 4;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: black;
+    color: white;
+    padding: 30px;
+    text-align: center;
+    margin-bottom: 15px;
+    margin-top:0 ;
+}
+
+.Card-info p:first-child{
+    font-size:22px;
+    padding-bottom: 0.2em;
+    margin-top: 0.3em;
+}
+
+@media screen and (max-width: 768px) {
+
+    .event{
+        flex-direction: column;
+    }
+
+    .event {
+        width: 100%;
+    }
+
+    .cardInfo{
+        font-size: 0.4em;
+        transition: ease-out 
+        
+    }
+
+    li{
+        padding: 0;
+    }
+}
+
+
+/* Formulario */
+
+.form-container{
+    padding-left: 10px;
+}
+
+.form-container h2{
+    margin-top:0;
+   
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+.container-input{
+    margin-top: 30px;
+    display: flex;
+    gap: 20px;
+}
+
+#nome{
+    width: 700px;
+    height: 20px;
+}
+
+#email{
+    width: 700px;
+    height: 20px;
+}
+.container-button{
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 15px;
+}
+
+/* Rodape */
+
+.container-footer{
+    color: white;
+    padding-top: 5px;
+    background-color: #3B3B3B;
+    text-align: center;
+}
+
+
+
+#insta{
+    width: 2.5%;
+
+}
+
+#twitter{
+    width: 1.9%;
+    margin-bottom: 3px;
+}
