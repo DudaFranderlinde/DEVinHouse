@@ -39,3 +39,7 @@ var convidado6 = {
     setor: "Arquibancada",
     idade: 21,
 };
+
+
+// exercício 5
+var listaDeConvidados = [convidado1, convidado2, convidado3, convidado4, convidado5, convidado6];
