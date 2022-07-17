@@ -30,3 +30,28 @@ var listaConvidados = [
  
    
 });
+
+// Exercício 3
+
+  var num1 = parseInt(prompt("Digite um valor para numero1:"));
+  var num2 = parseInt(prompt("Digite um valor para o numero2:"));
+  var operador = prompt("Digite a operação que deseja fazer(+,-,*,/):")
+
+function calculaOperacao(num1, num2, operador){
+  var result;
+
+  if(operador == "+"){
+    result = num1+num2;
+  }else if(operador == "-"){
+    result = num1-num2;
+  }else if(operador == "*"){
+    result = num1*num2;
+  }else if(operador == "/"){
+    result = num1/num2;
+
+  }
+
+  console.log(result)
+}
+
+calculaOperacao(num1, num2, operador)
