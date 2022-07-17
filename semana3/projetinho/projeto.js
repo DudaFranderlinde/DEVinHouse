@@ -43,3 +43,25 @@ var convidado6 = {
 
 // exercício 5
 var listaDeConvidados = [convidado1, convidado2, convidado3, convidado4, convidado5, convidado6];
+
+// exercício 6
+
+function liberarBebidas(array) {
+    
+    var resultado = array.map((convidado)=> {
+        convidado.openBar = false;
+
+        if(convidado.idade >= 18){
+            convidado.openBar = true;
+        }
+
+        return convidado;
+    });
+
+    return resultado;
+    
+}
+
+var convidadoComBebidasProcessadas = liberarBebidas(listaDeConvidados)
+
+console.log(convidadoComBebidasProcessadas)
