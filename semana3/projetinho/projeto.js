@@ -108,13 +108,27 @@ var montaNome = (objeto) => {
 
 
   listaArquibancada.forEach((convidado) => {
-    ulArquibancadaEl.innerHTML += `<li>${montaNome(convidado)}</li>`;
-  });
-  
-  listaCamarote.forEach((convidado) => {
-    ulCamaroteEl.innerHTML += `<li>${montaNome(convidado)}</li>`;
-  });
-  
-  listaPista.forEach((convidado) => {
-    ulPistaEl.innerHTML += `<li>${montaNome(convidado)}</li>`;
-  });
+    if(convidado.openBar === true){
+        arquibancada.innerHTML += `<li>${montaNome(convidado)}🍷</li>`;
+    }else{
+        arquibancada.innerHTML += `<li>${montaNome(convidado)}</li>`
+    }
+});
+
+listaCamarote.forEach((convidado) => {
+    if(convidado.openBar === true){
+        camarote.innerHTML += `<li>${montaNome(convidado)}🍷</li>`;
+    }else{
+        camarote.innerHTML += `<li>${montaNome(convidado)}</li>`;
+
+    }
+});
+
+listaPista.forEach((convidado) => {
+    if(convidado.openBar === true){
+        pista.innerHTML += `<li>${montaNome(convidado)}🍷</li>`;
+    }else{
+        pista.innerHTML += `<li>${montaNome(convidado)}</li>`;
+
+    }
+});
