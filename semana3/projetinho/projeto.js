@@ -95,3 +95,26 @@ function separarArquibancada(array){
 
 var listaArquibancada = separarArquibancada(listaDeConvidados);
 console.log(listaArquibancada)
+
+// exercício 8
+
+var arquibancada = document.getElementById("listaArquibancada");
+var pista = document.getElementById("listaPista");
+var camarote = document.getElementById("listaCamarote");
+
+var montaNome = (objeto) => {
+    return `${objeto.nome} ${objeto.sobrenome}`;
+  };
+
+
+  listaArquibancada.forEach((convidado) => {
+    ulArquibancadaEl.innerHTML += `<li>${montaNome(convidado)}</li>`;
+  });
+  
+  listaCamarote.forEach((convidado) => {
+    ulCamaroteEl.innerHTML += `<li>${montaNome(convidado)}</li>`;
+  });
+  
+  listaPista.forEach((convidado) => {
+    ulPistaEl.innerHTML += `<li>${montaNome(convidado)}</li>`;
+  });
