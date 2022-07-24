@@ -3,16 +3,19 @@ let contaCliente = [
     id: 1,
     nome: 'Cliente 01',
     saldo: 500,
+    senha: 1234
     },
     {
     id: 2,
     nome: 'Cliente 02',
     saldo: 3000,
+    senha: 2234
     },
     {
     id: 3,
     nome: 'Cliente 03',
     saldo: 5000,
+    senha: 3334
     },
 ];
 const selectConta = document.getElementById('conta');
@@ -116,14 +119,22 @@ function efetuaOperacao(event){
     let  idConta = parseInt(event.target.conta.value);
     const valor = parseFloat(event.target.valor.value);
     const operacao = parseInt(event.target.operacao.value);
+    const senha = (event.target.senha.value)
+
+
 
     if(!validarNumber(idConta) || !validarNumber(valor) || !validarNumber(operacao)){
         p.textContent = "Campos inválidos!";
         return;
     }
-   
+
+    if(!senha){
+        p.textContent = "Informe a senha correta!"
+        return;
+    }
+    
     let cliente = obtemContaCliente(idConta);
-   
+    
     console.log(cliente)
     switch(operacao){
         case OPERACAO_CONTA.SACAR:
