@@ -17,23 +17,26 @@
             </div>
         </nav>
 
-        <section class="sacar-depo">
+        <form id = "form" class="sacar-depo">
             <div class="container-dinheiro">
                 <select id="conta"></select>
 
-                <input  placeholder="Valor">
+                <input id="valor" placeholder="Valor">
                 <select id="operacao">
+                    <option value="0">(Selecione)</option>
                     <option value="1">Sacar</option>
                     <option value="2">Depositar</option>
                 </select>
-    
-                <button>Confirmar</button>
+                <div>
+                    <button>Confirmar</button>
+                </div>
+                <p id="p"></p>
             </div>
-            <p id="p"></p>
-        </section>
+        </form>
 
     </main>
     
-    <script src="index.js"></script>
+    
 </body>
+<script src="index.js"></script>
 </html>

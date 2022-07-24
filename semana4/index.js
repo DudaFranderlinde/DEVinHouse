@@ -15,7 +15,6 @@ let contaCliente = [
     saldo: 5000,
     },
 ];
-
 const selectConta = document.getElementById('conta');
 const body = document.body;
 
@@ -27,7 +26,7 @@ function addSelect(){
     option.textContent = '(Selecione)';
     selectConta.appendChild(option)
 
-    contaCliente.forEach((contaCLi)=> {
+    contaCliente.forEach((contaCLi, i)=> {
         const option = document.createElement('option');
         option.value = contaCLi.id;
         option.textContent = contaCLi.nome;
@@ -56,35 +55,39 @@ function validarSaldo(valor, saldo){
 
 
 function atualizaSaldo(id_cliente, saldo){
-    const contasSemContaAtual = contaCliente.filter((c) => c.id !== id_cliente.id);
-    const contaAtualizada = { ...id_cliente, saldo };
-    const contasAtualizadas = [...contasSemContaAtual, contaAtualizada];
+    let contasSemContaAtual = contaCliente.filter((c) => c.id !== id_cliente.id);
+    let contaAtualizada = { ...id_cliente, saldo };
+    let contasAtualizadas = [...contasSemContaAtual, contaAtualizada];
     contaCliente = contasAtualizadas;
-console.log(contaCliente)
+    console.log(contaCliente);
+}
 
+
+const obtemContaCliente =(idConta)=> {
+    return contaCliente.find((conta)=> conta.id === idConta);
 }
 
 let p = document.getElementById('p');
 
-function sacar(contaCliente, valor){
+function sacar(idConta, valor){
     if(!validarNumber(valor)){
         p.textContent = "Valor inválido. Tente novamente!";
         console.log(" valor invalido");
         return;
     }
-    if(!validarSaldo(valor, contaCliente.saldo)){
-        p.textContent = `Saldo insuficiente. Saldo atual : ${contaCliente.saldo}`;
+    if(!validarSaldo(valor, idConta.sa)){
+        p.textContent = `Saldo insuficiente. Saldo atual : ${idConta.saldo}`;
         console.log("saldo invalido")
         return; 
     }
 
-    const novoSaldo = contaCliente.saldo - valor ;
-    atualizaSaldo(contaCliente, novoSaldo)
+    const novoSaldo = idConta.saldo - valor ;
+    atualizaSaldo(idConta, novoSaldo)
     p.textContent = `Saque realizado com sucesso! Seu saldo disponível agora é de ${novoSaldo}`;
-    console.log(typeof valor)
+   
 }
 
-//sacar(contaCliente[1], 5)
+
 
 function depositar(valor, idConta){
     if(!validarNumber(valor)){
@@ -98,3 +101,44 @@ function depositar(valor, idConta){
     p.textContent = `Depósito realizado com sucesso! Seu saldo disponível agora é de ${novoSaldo}`;
 
 }
+
+const OPERACAO_CONTA = {
+    SACAR: 1,
+    DEPOSITAR: 2,
+  };
+
+
+
+
+function efetuaOperacao(event){
+    event.preventDefault();
+    
+    let  idConta = parseInt(event.target.conta.value);
+    const valor = parseFloat(event.target.valor.value);
+    const operacao = parseInt(event.target.operacao.value);
+
+    if(!validarNumber(idConta) || !validarNumber(valor) || !validarNumber(operacao)){
+        p.textContent = "Campos inválidos!";
+        return;
+    }
+   
+    let cliente = obtemContaCliente(idConta);
+   
+    console.log(cliente)
+    switch(operacao){
+        case OPERACAO_CONTA.SACAR:
+            sacar(cliente, valor)
+            console.log("entrou1");
+            break;
+        case OPERACAO_CONTA.DEPOSITAR:
+            depositar(valor, cliente);
+            console.log("entrou2");
+
+            break;
+        case error:
+            p.textContent = "Operação selecionada inválida!";
+            break;
+    }
+}
+ let formulario = document.getElementById('form');
+form.onsubmit = efetuaOperacao
