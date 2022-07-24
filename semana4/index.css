@@ -26,6 +26,7 @@ nav div h1{
 .container-dinheiro{
     margin-top: 5em;
     margin-left: 1em;
+    margin-right: 0;
     
 }
 
@@ -54,3 +55,7 @@ nav div h1{
     border-radius: 5px;
 }
 
+.sacar-depo p{ 
+  text-align: center;
+  padding-top: 5px;
+}
