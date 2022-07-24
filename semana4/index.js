@@ -64,9 +64,9 @@ console.log(contaCliente)
 
 }
 
+let p = document.getElementById('p');
 
 function sacar(contaCliente, valor){
-    let p = document.getElementById('p');
     if(!validarNumber(valor)){
         p.textContent = "Valor inválido. Tente novamente!";
         console.log(" valor invalido");
@@ -84,4 +84,17 @@ function sacar(contaCliente, valor){
     console.log(typeof valor)
 }
 
-sacar(contaCliente[1], 5)
+//sacar(contaCliente[1], 5)
+
+function depositar(valor, idConta){
+    if(!validarNumber(valor)){
+        p.textContent = "Valor inválido. Tente novamente!";
+        console.log(" valor invalido");
+        return;
+    }
+
+    const novoSaldo = idConta.saldo + valor;
+    atualizaSaldo(idConta, novoSaldo);
+    p.textContent = `Depósito realizado com sucesso! Seu saldo disponível agora é de ${novoSaldo}`;
+
+}
