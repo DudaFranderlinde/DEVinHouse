@@ -3,7 +3,7 @@ const input = document.getElementsByTagName('input')[0];
 
 
 function validarNumber(valor){
-    if(isNaN(valor) || valor <=0){
+    if(isNaN(valor)){
     return false;
 }
 
@@ -24,11 +24,6 @@ function verificaPar(){
     return p.textContent= "Valor inválido"
 }
 
-function nPare(event){
-    event.preventDefault();
-    let valor = (event.target.num.value);
-    verificaPar(valor);
-}
 
 
 let button = document.getElementById('but');
