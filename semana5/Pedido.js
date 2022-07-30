@@ -15,7 +15,7 @@ class Pedido{
         this.nomeCliente = nomeCliente;
     }
 
-    adicionarProduto({produto}) {
+    adicionarProduto(produto) {
         const validaDado = produto instanceof Produto;
         if(validaDado){
             this.listaProdutos.push(produto);
@@ -23,4 +23,12 @@ class Pedido{
         }
         return alert("Produto Inválido");
     }
+
+    calcularTotal(){
+        let valorTotal= 0;
+        this.listaProdutos.forEach(produto => {
+            valorTotal = valorTotal + (produto.preco * produto.quantidade);
+            return valorTotal + console.log(valorTotal);
+        });
+    } 
 } 
