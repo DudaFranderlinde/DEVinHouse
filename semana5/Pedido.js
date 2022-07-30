@@ -25,11 +25,11 @@ export class Pedido{
     }
 
     calcularTotal(){
-        let valorTotal= 0;
+        let valorTotal=0;
         this.listaProdutos.forEach(produto => {
             valorTotal = valorTotal + (produto.preco * produto.quantidade);
             
         });
-        return valorTotal + console.log(valorTotal);
+        return valorTotal ;
     } 
 } 

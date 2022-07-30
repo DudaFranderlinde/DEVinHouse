@@ -30,3 +30,11 @@ pedido2.adicionarProduto(produto5)
 
 
 
+const pedidos = [pedido1,pedido2]
+const lista = document.getElementById("lista");
+import { insertInfoCard } from './elementos.js';
+
+
+pedidos.forEach((pedido) => {
+    lista.appendChild(insertInfoCard(pedido));
+  });
