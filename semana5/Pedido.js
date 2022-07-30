@@ -1,6 +1,6 @@
 import {Produto} from "./Produto.js";
 
-class Pedido{
+export class Pedido{
     numeroPedido;
     dataPedido;
     estaPago;
@@ -21,14 +21,15 @@ class Pedido{
             this.listaProdutos.push(produto);
             return console.log(this.listaProdutos);
         }
-        return alert("Produto Inválido");
+        return console.log("Produto Inválido : "+ produto);
     }
 
     calcularTotal(){
         let valorTotal= 0;
         this.listaProdutos.forEach(produto => {
             valorTotal = valorTotal + (produto.preco * produto.quantidade);
-            return valorTotal + console.log(valorTotal);
+            
         });
+        return valorTotal + console.log(valorTotal);
     } 
 } 
