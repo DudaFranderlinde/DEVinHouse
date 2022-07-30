@@ -1,4 +1,4 @@
-class Produto{
+export class Produto{
     nome;
     preco;
     emEstoque;
