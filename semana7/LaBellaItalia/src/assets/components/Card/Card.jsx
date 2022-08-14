@@ -2,21 +2,15 @@ import PropTypes from 'prop-types';
 
 
 
-export function Card(){
-    const produto = {
-        img: "./public/cardapio/torta.jpg",
-        titulo: "Torta de Brigadeiro",
-        descricao: "Bolo de chocolate recheado de brigadeiro com calda de brigadeiro quente",
-        preco: " 39,00",
-        preparo: "30 minutos"
-    }
+export function Card({produto}){
     return(
         <section className="container-card">
             <div className="container-img-card">
-                <img src={produto.img} alt="FOto" />
+                <img src={produto.img} alt="" />
             </div>
             <div>
                 <h2>{produto.titulo}</h2>
+                {console.log(produto.titulo)}
                 <p><strong>Descrição: </strong>  {produto.descricao}</p>
                 <p><strong>Preço: </strong> R$:{produto.preco}</p>
                 <p><strong>Tempo de preparo: </strong>{produto.preparo}</p>

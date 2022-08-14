@@ -1,0 +1,69 @@
+ {
+    "entradas": [{
+      "id": 1,
+      "img": "./public/cardapio/pane.png",
+      "titulo": "Pane e Coperto",
+      "descricao": "Pães variados de nossa padaria: focaccia, pão italiano, crostini, manteiga e ricota com creme de tomate",
+      "preco": " 22,00",
+      "preparo": "15 minutos"
+    },{
+      "id": 2,
+      "img": "./public/cardapio/anti.png",
+      "titulo": "Antipasti di Salumeria",
+      "descricao": "Presunto parma, mortadela, grana padano e azeitonas pretas",
+      "preco": " 82,00",
+      "preparo": "30 minutos"
+    },{
+      "id": 3,
+      "img": "./public/cardapio/insalata.jpg",
+      "titulo": "Insalata Italiana Clássica Caprese",
+      "descricao": " Folhas verdes orgânicas, tomate confitado e mussarela de búfala sobre creme de tomate",
+      "preco": " 48,00 - 79,00",
+      "preparo": "30-45 minutos"
+    }],
+    "pratos":[{
+      "id": 4,
+      "img": "./public/cardapio/tortalli.jpg",
+      "titulo": "Tortelli Con Gamberi Al Limone",
+      "descricao": "Massa fresca recheado com camarão, ao creme de limão siciliano e ovas de peixe",
+      "preco": " 115,00",
+      "preparo": "45 minutos"
+    },{
+      "id": 5,
+      "img": "./public/cardapio/risotto.jpg",
+      "titulo": "Gamberoni ai Agrumi con Risotto di Asparagi",
+      "descricao": "Camarões grelhados com molho de tangerina e risoto de aspargos",
+      "preco": " 149,00",
+      "preparo": "45 minutos"
+    },{
+      "id": 6,
+      "img": "./public/cardapio/fetuccini.jpg",
+      "titulo": "Scaloppe con Fetuccini",
+      "descricao": "Escalope de filet mignon grelhado servido com fetuccini na manteiga",
+      "preco": " 64,00",
+      "preparo": "30 minutos"
+    }],
+    "sobremesas": [{
+      "id": 7,
+      "img": "./public/cardapio/torta.jpg",
+      "titulo": "Torta de Brigadeiro",
+      "descricao": "Bolo de chocolate recheado de brigadeiro com calda de brigadeiro quente",
+      "preco": " 39,00",
+      "preparo": "30 minutos"
+    },{
+      "id": 8,
+      "img": "./public/cardapio/fragole.jpg",
+      "titulo": "Millefoglie di Fragole con Mascarpone",
+      "descricao": "Massa folhada crocante, recheada de morangos e creme de mascarpone acompanhada com calda de baunilha",
+      "preco": " 44,00",
+      "preparo": "30 minutos"
+    },{
+      "id": 9,
+      "img": "./public/cardapio/petit.jpg",
+      "titulo": "Petit Gâteau alla Siciliana",
+      "descricao": "Bolo quente recheado de creme de limão siciliano e chocolate branco com sorvete de baunilha e calda de caramelo",
+      "preco": " 41,00",
+      "preparo": "45 minutos"
+    }]
+
+}
