@@ -1,4 +1,3 @@
-import styles from './Nav.css'
 export function Nav(){
     return(
         <nav className="header">
