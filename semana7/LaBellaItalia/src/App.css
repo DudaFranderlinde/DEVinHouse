@@ -7,7 +7,7 @@
 #container-body{
   display: flex;
   justify-content: space-between;
-  gap: 400px;
+  gap: 50px;
   flex-wrap: wrap;
   
 }
@@ -62,4 +62,33 @@ footer{
 #container-infos img{
   width: 20px;
   margin-right: 10px;
+}
+
+.container-card{
+  background-color: #FDF6E7;
+  padding: 0px;
+  color: #242424;
+  width: 300px;
+  border-radius: 10px;
+  margin: 10px;
+  
+}
+
+.container-card h2{
+  text-align: center;
+  padding: 5px;
+  color: #272572;
+}
+.container-card p{
+  word-break: break-word;
+  margin: 0px 10px 0px 10px;
+  color: #242424;
+}
+.container-img-card{
+  width: 100%;
+}
+.container-card img{
+  width: 100%;
+  padding: 0px;
+  border-radius:10px 10px 0px 0px ;
 }
