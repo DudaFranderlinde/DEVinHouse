@@ -1,6 +1,27 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  padding-bottom: 0px;
+  background-color:#FDF6E7 ;
+  color: #272572;
+}
+
+#listaEl{
+  list-style: none;
+}
+
+#div-logo{
+  width: 10vh;
+}
+
+#div-logo img{
+  width: 100%;
 }

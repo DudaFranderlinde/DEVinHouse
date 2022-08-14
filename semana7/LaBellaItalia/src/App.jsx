@@ -1,7 +1,9 @@
 import './App.css'
-
+import {Nav} from './assets/components/Nav/Nav.jsx'
 function App() {
-  return <h1>La Bella Itália</h1>
+  return (
+    <Nav/>
+  )
 }
 
 export default App
