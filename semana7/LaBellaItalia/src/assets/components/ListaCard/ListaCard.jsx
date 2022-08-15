@@ -7,7 +7,6 @@ export function ListaCard({produtos}){
         {produtos.map((element)=> (
             <li key={element.id}>
                 <Card produto={element}/>
-                {console.log(element.titulo)}
             </li>
         ))}
         

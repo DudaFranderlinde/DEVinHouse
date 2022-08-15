@@ -10,7 +10,6 @@ export function Card({produto}){
             </div>
             <div>
                 <h2>{produto.titulo}</h2>
-                {console.log(produto.titulo)}
                 <p><strong>Descrição: </strong>  {produto.descricao}</p>
                 <p><strong>Preço: </strong> R$:{produto.preco}</p>
                 <p><strong>Tempo de preparo: </strong>{produto.preparo}</p>
