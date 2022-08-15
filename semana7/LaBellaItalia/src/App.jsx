@@ -10,9 +10,14 @@ function App() {
           <main>
             <Secao nameSection="Entrada" produto={menu.entradas}/>
             <br />
-            <Secao nameSection="Pratos" produto={menu.pratos}/>
+            <Secao nameSection="Saladas" produto={menu.saladas}/>
+            <br />
+            <Secao nameSection="Pratos principais" produto={menu.pratos}/>
             <br />
             <Secao nameSection="Sobremesas" produto={menu.sobremesas}/>
+            <br />
+            <Secao nameSection="Bebidas" produto={menu.bebidas}/>
+
           </main>
           
           <Footer/>
