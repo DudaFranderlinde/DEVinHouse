@@ -8,7 +8,7 @@ export const ListaCards = ({ produtos }) => (
   <ul className={styles.lista}>
     {produtos.map((produto) => (
       <li className={styles.listaItem} key={produto.id}>
-        <Card produto={produto} />
+        <Card produto={produto} selecionado onSelecionado={()=> console.log("Card clicado")} />
       </li>
     ))}
   </ul>

@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 
 import styles from './Card.module.css';
 
-export const Card = ({ produto, selecionado, onSeleciondo }) => (
-  <div className={`${styles.card}  ${selecionado? styles.cardClicado : ""}`}>
+export const Card = ({ produto, selecionado, onSelecionado }) => (
+  <div className={`${styles.card}  ${selecionado? styles.cardClicado : ""}`} onClick={onSelecionado}>
     <img className={styles.img} alt='Foto do prato' src={produto.img} height={200} />
 
     <div className={styles.info}>
