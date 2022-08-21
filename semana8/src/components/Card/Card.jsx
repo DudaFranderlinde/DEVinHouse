@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 import styles from './Card.module.css';
 
-export const Card = ({ produto }) => (
+export const Card = ({ produto, selecionado, onSeleciondo }) => (
   <div className={styles.card}>
     <img className={styles.img} alt='Foto do prato' src={produto.img} height={200} />
 
@@ -23,6 +23,8 @@ export const Card = ({ produto }) => (
 );
 
 Card.propTypes = {
+  selecionado: PropTypes.bool,
+  onSeleciondo: PropTypes.func,
   produto: PropTypes.shape({
     img: PropTypes.string.isRequired,
     nome: PropTypes.string.isRequired,
