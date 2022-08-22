@@ -2,7 +2,9 @@ import PropTypes from 'prop-types';
 
 import styles from './Card.module.css';
 
-export const Card = ({ produto, selecionado, onSelecionado }) => (
+export const Card = ({ produto, selecionado, onSelecionado }) => {
+  
+  return(
   <div className={`${styles.card}  ${selecionado? styles.cardClicado : ""}`} onClick={onSelecionado}>
     <img className={styles.img} alt='Foto do prato' src={produto.img} height={200} />
 
@@ -20,7 +22,7 @@ export const Card = ({ produto, selecionado, onSelecionado }) => (
       <p>{produto.tempoPreparo}</p>
     </div>
   </div>
-);
+)};
 
 Card.propTypes = {
   selecionado: PropTypes.bool,
