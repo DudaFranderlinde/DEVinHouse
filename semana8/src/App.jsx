@@ -5,7 +5,7 @@ import styles from './App.module.css';
 function App() {
   const subSecoesEntradas = new Set(produtos.entradas.map((p) => p.subSecao));
   const subSecoesPrincipais = new Set(produtos.principais.map((p) => p.subSecao));
-  console.log(subSecoesEntradas, subSecoesPrincipais);
+  //console.log(subSecoesEntradas, subSecoesPrincipais);
 
   return (
     <div className={styles.app}>

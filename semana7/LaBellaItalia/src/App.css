@@ -96,6 +96,11 @@ footer{
 main{
   width: 100%;
 }
+
+.secao h2, hr{
+  padding-left: 10px;
+}
+
 .container-secao{
   width: 100%;
 
@@ -124,7 +129,7 @@ main{
   }
 
 #div-logo img{
-    display: block;
-   margin: 0px auto
+  
+  
   }
 }
