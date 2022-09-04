@@ -10,15 +10,14 @@ const [ids, setIds] = useState([]);
 
 const handleSelecionar = (recebido)=>{
   const verifica = ids.includes(recebido)
-  console.log(verifica)
+  //console.log(verifica)
   const filtro = ids.filter(element=> element !== recebido);
-  console.log(filtro)
+  //console.log(filtro)
   
     if(verifica){
       setIds(filtro)
     }else{
-      console.log("ola")
-      setIds([...ids, recebido])
+      setIds((e)=>  [...e, recebido])
     }
      
 }
@@ -27,7 +26,7 @@ const handleSelecionar = (recebido)=>{
   <ul className={styles.lista}>
     {produtos.map((produto) => (
       <li className={styles.listaItem} key={produto.id}>
-        <Card produto={produto} selecionado={ids.some(produto=> produto.id)}  onSelecionado={handleSelecionar(produto.id)} />
+        <Card produto={produto} selecionado={ids.some(produto=> produto.id)}  onSelecionado={()=> (handleSelecionar(produto.id))} />
       </li>
     ))}
   </ul>
