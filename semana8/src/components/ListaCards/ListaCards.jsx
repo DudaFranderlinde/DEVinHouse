@@ -10,10 +10,7 @@ const [ids, setIds] = useState([]);
 
 const handleSelecionar = (recebido)=>{
   const verifica = ids.includes(recebido)
-  //console.log(verifica)
-  const filtro = ids.filter(element=> element !== recebido);
-  //console.log(filtro)
-  
+  const filtro = ids.filter(element=> element !== recebido);  
     if(verifica){
       setIds(filtro)
     }else{

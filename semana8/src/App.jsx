@@ -2,11 +2,13 @@ import { Footer, Header, Secao } from '@components';
 import produtos from '@services/produtos.json';
 import { FiltroSecao } from './components/FiltroSecao/FiltroSecao';
 import styles from './App.module.css';
+import { useState } from 'react';
 
 function App() {
   const subSecoesEntradas = new Set(produtos.entradas.map((p) => p.subSecao));
   const subSecoesPrincipais = new Set(produtos.principais.map((p) => p.subSecao));
   //console.log(subSecoesEntradas, subSecoesPrincipais);
+  const [secaoSelecionada, setSecaoSelecionada] = useState([]);
 
   let ArraySub = [
     {
@@ -49,7 +51,7 @@ function App() {
   ];
 
   function handleSelecionarSecao(titulo) {
-
+    secaoSelecionada == titulo ? (secaoSelecionada == null) : (setSecaoSelecionada((e)=> [...e, titulo]));
   }
 
   return (
