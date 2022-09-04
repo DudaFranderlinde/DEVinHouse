@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+.main{
+    width: 100%;
+    height: 100vh;
+    padding: 10px;
+    margin-top: 0px;
+
+}
+.main main{
+    margin-left: 400px;
+}
+
+
+header{
+    display: flex;
+    justify-content: space-between;
+    width: 142vh;
+    height: 100px;
+}
+
+header div{
+    background-color:  #6D6875;
+    border: 0.5px solid #CD8D94;
+    border-radius: 10px;
+    flex: 1;
+    margin-left: 5px;
+    text-align: center;
+}
+
+.cardsuperior h3{
+    color: #CD8D94;
+}
+
+.cardsuperior p{
+    color: white;
+}
+
+.conatinerbarrapesquisa{
+    width: 142vh;
+    height: 30px;
+    display: flex;
+    border: 2px solid #6D6875;
+    border-radius: 10px;
+    margin: 30px 20px 0px 0px;
+}
+
+.conatinerbarrapesquisa input{
+    flex: 3;
+    border: none;
+    background-color: #D9D9D9;
+
+}
+
+.conatinerbarrapesquisa div{
+    width: 30px;
+    height: 30px;
+}
+
+.btnBusca{
+    width: 100%;
+    border-radius: 10px 0px 0px 10px;
+
+}
+
+.btnLimpaBarra{
+    width: 100%;
+    border-radius: 0px 10px 10px 0px;
+
+}
