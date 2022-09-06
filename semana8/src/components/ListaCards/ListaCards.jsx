@@ -12,10 +12,11 @@ const handleSelecionar = (recebido)=>{
   const verifica = ids.includes(recebido)
   const filtro = ids.filter(element=> element !== recebido);  
     if(verifica){
-      setIds(filtro)
     }else{
       setIds((e)=>  [...e, recebido])
+
     }
+    console.log(ids)
      
 }
 

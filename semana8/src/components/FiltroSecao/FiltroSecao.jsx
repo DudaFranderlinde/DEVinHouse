@@ -6,7 +6,7 @@ export const FiltroSecao = ({ secoes, onSelecionarSecao}) => {
         <div>
             <ul>
                 <li>
-                    <button onClick={onSelecionarSecao(secoes)}>{secoes}</button>
+                    <button onClick={()=>onSelecionarSecao()}>{secoes}</button>
                 </li>
             </ul>
         </div>
