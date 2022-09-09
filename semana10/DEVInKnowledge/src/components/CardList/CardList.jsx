@@ -9,5 +9,5 @@ export const CardList = ({ children })=>{
 }
 
 CardList.propTypes = {
-    children: PropTypes.elementType,
+    children: PropTypes.node,
 }
