@@ -13,12 +13,10 @@ export const MainContent = () => {
                 <Summary />
 
                <Filter/>
-               
+
                 <TipCard titulo={"HTML5"} descricao={"Duda é a melhor"} ></TipCard>
 
-                <CardList> 
-                    <TipCard/> 
-                </CardList>       
+                <CardList><TipCard/></CardList>       
             </main>
         </div>
     )
