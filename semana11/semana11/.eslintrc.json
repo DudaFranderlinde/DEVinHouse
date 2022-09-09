@@ -5,7 +5,13 @@
     },
     "extends": [
         "plugin:react/recommended",
-        "standard"
+        "standard",
+        "plugin:react/recommended",
+        "plugin:react-hooks/recommended",
+        "plugin:react/jsx-runtime",
+        "plugin:jsx-a11y/recommended",
+        "standard",
+        "prettier"
     ],
     "overrides": [
     ],
@@ -14,8 +20,16 @@
         "sourceType": "module"
     },
     "plugins": [
-        "react"
+        "react",
+        "jsx-a11y"
     ],
     "rules": {
-    }
+        "prefer-const": "warn",
+        "no-unused-vars": "off"
+    },
+    "settings": {
+        "react": {
+          "version": "detect"
+        }
+      }
 }
