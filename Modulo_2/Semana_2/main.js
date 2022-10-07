@@ -1,3 +1,4 @@
+const { request, response } = require('express');
 const express = require('express')
 const { v4: uuidv4 } = require('uuid');
 
@@ -7,7 +8,10 @@ app.use(express.json())
 let saboresPizza = []
 
 app.get('/pizzas', (request, response)=> {
-    
+    const pesquisaPizza = saboresPizza.filter(elemento=> elemento.name.toLowerCase().includes(request.query.name.toLocaleLowerCase()))
+    if (request.query.name) {
+       return response.json(pesquisaPizza)
+    }
     response.status(200).json(saboresPizza)
 })
 
@@ -58,6 +62,34 @@ app.get('/solicitations/:id', (request, response)=> {
     }
 
     response.json(pedidoPesquisado);
+})
+
+app.put('/pizzas/:id', (request, response)=> {
+    const pizzaBusca = saboresPizza.find(elemento=> elemento.id === request.params.id);
+
+    if (!pizzaBusca) {
+        return response.status(404).json({error: "Item não encontrado no sistema"})
+    }
+
+    const atualizaPizza = saboresPizza.map(elemento=> {
+        if (elemento.id === request.params.id) {
+            elemento.name = request.body.name,
+            elemento.description = request.body.description,
+            elemento.price = request.body.price,
+            elemento.ingredients = request.body.ingredients
+        }
+        return elemento;
+    })
+
+    saboresPizza = [...atualizaPizza]
+    response.json(saboresPizza)
+})
+
+
+app.delete('/pizzas/:id', (request, response)=> {
+    const filtraPizzas = saboresPizza.filter(elemento => elemento.id !== request.params.id)
+    tasks = [...filtraPizzas]
+    response.json()
 })
 
 app.listen(3333, ()=> {
