@@ -44,6 +44,16 @@ app.post('/solicitations', (request, response)=> {
     response.json(novoPedido);
 })
 
+app.get('/solicitations/:id', (request, response)=> {
+    const pedidoPesquisado = pedidos.find(elemento => elemento.id  === request.params.id);
+
+    if (!pedidoPesquisado) {
+        return response.json({error: "Item não encontrado no sistema"})
+    }
+
+    response.json(pedidoPesquisado);
+})
+
 app.listen(3333, ()=> {
     console.log('Servidor Online');
 })
