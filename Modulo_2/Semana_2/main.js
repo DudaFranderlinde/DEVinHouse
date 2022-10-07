@@ -28,6 +28,22 @@ app.get('/solicitations', (request, response)=> {
     response.status(200).json(pedidos);
 })
 
+app.post('/solicitations', (request, response)=> {
+    const novoPedido = {
+        id: uuidv4(),
+        client: request.body.client,
+        cpf: request.body.cpf,
+        address: request.body.address,
+        phone: request.body.phone,
+        payment: request.body.payment,
+        description: request.body.description,
+        demanded: request.body.demanded,
+    }
+
+    pedidos.push(novoPedido);
+    response.json(novoPedido);
+})
+
 app.listen(3333, ()=> {
     console.log('Servidor Online');
 })
