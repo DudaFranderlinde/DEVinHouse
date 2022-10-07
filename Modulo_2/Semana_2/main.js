@@ -6,7 +6,8 @@ app.use(express.json())
 
 let saboresPizza = []
 
-app.get('/pizzas/:name', (request, response)=> {
+app.get('/pizzas', (request, response)=> {
+   
     response.status(200).json(saboresPizza)
 })
 
