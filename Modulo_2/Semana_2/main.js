@@ -7,11 +7,16 @@ app.use(express.json())
 let saboresPizza = []
 
 app.get('/pizzas', (request, response)=> {
-   
+    
     response.status(200).json(saboresPizza)
 })
 
 app.post('/pizzas', (request, response)=> {
+    const pizzaExiste = saboresPizza.find(elemento=> elemento.name === request.body.name);
+
+    if (pizzaExiste) {
+        return response.status(401).json({error: "Esta pizza já foi cadastrada"})
+    }
     const novaPizza = {
         id: uuidv4(),
         name: request.body.name,
