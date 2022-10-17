@@ -1,5 +1,5 @@
 import { Router } from "express"
-import { atualizandoPizza, criarPizza, deletarPizza, listaPizzas } from "../controllers/pizzas.controllers.js";
+import { atualizandoPizza, criarPizza, deletarPizza, listaPizzas } from "../controllers/pizzas.controllers";
 
 
 const pizzaRoutes = Router()
