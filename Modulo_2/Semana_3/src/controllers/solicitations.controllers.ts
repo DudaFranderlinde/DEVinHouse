@@ -1,16 +1,17 @@
 import { v4 as uuidv4 } from "uuid"
 import { getSolicitationsFile } from "../utils/getSolicitationsFile.js";
 import fs from 'fs'
+import {Request, Response} from 'express'
+import { BodyParamsCriarPedido, Pedido, ParamsId } from "../types/solicitations.types";
 
-//let pedidos = []
 
-export function listarPedidos(request, response) {
-    const pedidos = getSolicitationsFile()
+export function listarPedidos(request: Request, response: Response) {
+    const pedidos: Pedido[] = getSolicitationsFile()
     response.status(200).json(pedidos);
 }
 
-export function criarPedido(request, response) {
-    const pedidos = getSolicitationsFile()
+export function criarPedido(request: Request<{}, {}, BodyParamsCriarPedido>, response: Response) {
+    const pedidos: Pedido[] = getSolicitationsFile()
 
     const novoPedido = {
         id: uuidv4(),
@@ -28,8 +29,8 @@ export function criarPedido(request, response) {
     response.json(novoPedido);
 }
 
-export function pesquisarPedido(request, response) {
-    const pedidos = getSolicitationsFile()
+export function pesquisarPedido(request: Request<ParamsId>, response: Response) {
+    const pedidos: Pedido[] = getSolicitationsFile()
     const pedidoPesquisado = pedidos.find(elemento => elemento.id  === request.params.id);
 
     if (!pedidoPesquisado) {
@@ -39,14 +40,14 @@ export function pesquisarPedido(request, response) {
     response.json(pedidoPesquisado);
 }
 
-export function atualizarStatus(request, response){
+export function atualizarStatus(request: Request<ParamsId>, response: Response){
     const id = request.params.id
-    const solicitations = getSolicitationsFile()
+    const pedidos: Pedido[] = getSolicitationsFile()
 
-    const pedidoAtualizado = solicitations.map(elemento=>{
+    const pedidoAtualizado = pedidos.map(elemento=>{
         if (elemento.id === request.params.id) {
             if(elemento.order === "EM PRODUÇÃO")  {
-                lemento.order = "HÁ CAMINHO"
+                elemento.order = "HÁ CAMINHO"
             }else if ( elemento.order === "HÁ CAMINHO"){
                 elemento.order = "FINALIZADO"
             }
