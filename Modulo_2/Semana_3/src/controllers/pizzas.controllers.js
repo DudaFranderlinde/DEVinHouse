@@ -61,6 +61,6 @@ export function atualizandoPizza(request, response) {
 export function deletarPizza(request, response) {
     let listaPizzas = getPizzasFile()
     const filtraPizzas = listaPizzas.filter(elemento => elemento.id !== request.params.id)
-    tasks = [...filtraPizzas]
+    fs.writeFileSync('pizzas.json', JSON.stringify([...filtraPizzas]))
     response.json()
 }
