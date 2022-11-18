@@ -1,4 +1,5 @@
-import { Controller, Post, Body } from '@nestjs/common'
+import { Controller, Post, Body, Get, Query } from '@nestjs/common'
+import { get } from 'http';
 import { Cerveja } from './cerveja.entity';
 import { CervejaService } from './cerveja.service';
 
@@ -9,7 +10,12 @@ export class CervejaController {
     @Post()
     public async criarCerveja(@Body() body: Cerveja){
         const cerveja = await this.service.criarCerveja(body)
-        console.log(cerveja);
-        
+        return cerveja;
     }
+
+    @Get()
+    public async buscarCervejas(@Query('page') page = 0, @Query('size') size = 10){
+        return await this.service.buscarCervejas(page, size)
+    }
+
 }

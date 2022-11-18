@@ -18,9 +18,25 @@ export class CervejaService {
         }
 
         cerveja.id = uuidV4()
-        
+
         await this.database.salvarCerveja(cerveja);
         return cerveja;
 
+    }
+
+    public async buscarCervejas(page: number, size: number){
+        const indiceInicial = page * size;
+        const indiceFinal = indiceInicial + size;
+
+        const cervejas = await this.database.getCervejas();
+        if (cervejas.length > indiceInicial) {
+        if (cervejas.length > indiceFinal) {
+            return cervejas.slice(indiceInicial, indiceFinal);
+        } else {
+            return cervejas.slice(indiceInicial, cervejas.length);
+        }
+        } else {
+        return [];
+        }   
     }
 }
