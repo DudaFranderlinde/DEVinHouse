@@ -64,4 +64,18 @@ export class CervejaService {
         await this.database.salvarCerveja(findCerveja);
         return findCerveja
     }
+
+    public async deletarCerveja(id: string){
+        const cervejas = await this.database.getCervejas()
+        const findCerveja = cervejas.find(elemento=> elemento.id === id);
+        if (!findCerveja) {
+          throw new ConflictException({
+            statusCode: 409,
+            message:` Cerveja ID ${id} is not exists`,
+          });
+        }
+        const filtrarCerveja = cervejas.filter(elemento=> elemento.id !== id);
+        await this.database.salvarListaCervejas(filtrarCerveja)
+        return findCerveja
+    }
 }
