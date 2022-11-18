@@ -39,4 +39,11 @@ export class CervejaService {
         return [];
         }   
     }
+
+    public async buscarDetalhes(id: string){
+        const cervejas = await this.database.getCervejas();
+        return cervejas.find(
+            elemento => elemento.id == id,
+        );
+    }
 }
