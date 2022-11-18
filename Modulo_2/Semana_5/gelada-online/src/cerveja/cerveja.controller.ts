@@ -1,5 +1,4 @@
-import { Controller, Post, Body, Get, Query, Param } from '@nestjs/common'
-import { get } from 'http';
+import { Controller, Post, Body, Get, Query, Param, Put } from '@nestjs/common'
 import { Cerveja } from './cerveja.entity';
 import { CervejaService } from './cerveja.service';
 
@@ -21,6 +20,11 @@ export class CervejaController {
     @Get(':id')
     public async buscarDetalhes(@Param('id') id){
         return await this.service.buscarDetalhes(id)
+    }
+
+    @Put(':id')
+    public async atualizaCerveja(@Body() body: Cerveja, @Param('id') id){
+        return await this.service.atualizaCerveja(id, body)
     }
 
 }

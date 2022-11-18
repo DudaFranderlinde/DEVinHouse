@@ -1,4 +1,4 @@
-import { Injectable, ConflictException } from '@nestjs/common'
+import { Injectable, ConflictException, HttpException, HttpStatus } from '@nestjs/common'
 import { Database } from 'src/database/database';
 import { Cerveja } from './cerveja.entity';
 import { v4 as uuidV4 } from 'uuid'
@@ -45,5 +45,23 @@ export class CervejaService {
         return cervejas.find(
             elemento => elemento.id == id,
         );
+    }
+
+    public async atualizaCerveja(id: string, cerveja: Cerveja){
+        const cervejas = await this.database.getCervejas()
+        const findCerveja = cervejas.find(elemento=> elemento.id === id)
+        if(!findCerveja){
+            throw new HttpException({message: `Cervejas ID ${id} not found` }, HttpStatus.NOT_FOUND )
+        }
+
+        findCerveja.nome = cerveja.nome
+        findCerveja.descricao = cerveja.descricao
+        findCerveja.nomeCervejaria = cerveja.nomeCervejaria
+        findCerveja.tipo = cerveja.tipo
+
+        const filtrarCerveja = cervejas.filter(elemento=> elemento.id !== id);
+        await this.database.salvarListaCervejas(filtrarCerveja);
+        await this.database.salvarCerveja(findCerveja);
+        return findCerveja
     }
 }
