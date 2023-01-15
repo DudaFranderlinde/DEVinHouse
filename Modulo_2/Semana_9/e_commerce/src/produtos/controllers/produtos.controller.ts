@@ -18,7 +18,17 @@ export class ProdutosController{
     async findOne(@Param('id') id: number, @Res() response: Response){
         const produto = await this.service.findOne(id)
         if(produto == null){
-            response.status(HttpStatus.NOT_FOUND).send({message:`Nenhum usuário encontrado com o ID ${id}`})
+            response.status(HttpStatus.NOT_FOUND).send({message:`Nenhum produto encontrado com o ID ${id}`})
+        }
+        response.status(HttpStatus.OK).send(produto)
+
+    }
+
+    @Get(':categoria')
+    async findByCategoria(@Param('categoria') categoria: number, @Res() response: Response){
+        const produto = await this.service.findOne(categoria)
+        if(produto == null){
+            response.status(HttpStatus.NOT_FOUND).send({message:`Nenhum produto encontrado com a CATEGORIA ${categoria}`})
         }
         response.status(HttpStatus.OK).send(produto)
 
