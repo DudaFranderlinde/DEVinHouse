@@ -66,9 +66,32 @@ export class CarrinhoService{
         await writeFile('comprasFeitas.json', JSON.stringify([...compras, newCompra]));
     }
 
-    public async getCompras(){
+    async getCompras(){
         const comprarInFile = await readFile('comprasFeitas.json', 'utf-8');
         const compras = JSON.parse(comprarInFile);
         return compras;
+    }
+
+    async deleteProduto(idProduto: number){
+        const produto = await this.produtoRepository.findOne({
+            where:{
+                id: idProduto
+            }
+        })
+        const carrinho = await this.carrinhoRespository.find({
+            where:{
+                id: produto.carrinho.id
+            },relations:{
+                produtos:true
+            }
+        })
+        const deleteProduto = carrinho.filter((elemento)=>  {
+            if(elemento.produtos.includes(produto)){
+                delete elemento.produtos
+            }
+        }) 
+
+        await this.carrinhoRespository.save(carrinho)
+
     }
 }

@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Patch, Post, Query } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, Patch, Post, Query } from "@nestjs/common";
 import { CreatePayDto } from "../dto/createPay.dto";
 import { CarrinhoService } from "../service/carrinho.service";
 
@@ -15,11 +15,16 @@ export class CarrinhoController{
 
     @Patch('addProduto')
     async addProduto(@Query('carrinho') idCarrinho: number, @Query('produto') idProduto:number ){
-        return await this.service
+        return await this.service.addProduto(idCarrinho, idProduto)
     }
 
     @Post('pagamento')
     async realizarPagamento(@Body() createUser: CreatePayDto){
+        return await this.service.realizarPagamento(createUser)
+    }
 
+    @Delete('produtos/:id')
+    async deleteProduto(@Param('id') id:number){
+        return await this.service.deleteProduto(id)
     }
 }
