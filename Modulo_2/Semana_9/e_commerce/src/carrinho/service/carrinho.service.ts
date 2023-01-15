@@ -1,5 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { Inject } from "@nestjs/common/decorators";
+import { ProdutosEntity } from "src/produtos/entities/produtos.entity";
 import { Repository } from "typeorm";
 import { CarrinhoEntity } from "../entities/carrinho.entity";
 
@@ -8,7 +9,9 @@ import { CarrinhoEntity } from "../entities/carrinho.entity";
 export class CarrinhoService{
     constructor(
         @Inject('CARRINHO_REPOSITORY')
-        private carrinhoRespository: Repository<CarrinhoEntity>
+        private carrinhoRespository: Repository<CarrinhoEntity>, 
+        @Inject('PRODUTOS_REPOSITORY')
+        private produtoRepository: Repository<ProdutosEntity>
     ){}
 
     async compras(usuario: number){
@@ -29,5 +32,30 @@ export class CarrinhoService{
                 total
             }
         }
+    }
+
+    async addProduto(idCarrinho: number, idProduto: number){
+        const carrinho = await this.carrinhoRespository.findOne({
+            where:{
+                id: idCarrinho
+            },
+            relations:{
+                produtos: true
+            }
+        })
+
+        const produto = await this.produtoRepository.findOne({
+            where:{
+                id: idProduto
+            },
+            relations:{
+               carrinho : true
+            }
+        })
+
+        carrinho.addProdutos(produto)
+        await this.carrinhoRespository.save(carrinho)
+        await this.produtoRepository.update(idProduto, {carrinho:carrinho})
+
     }
 }

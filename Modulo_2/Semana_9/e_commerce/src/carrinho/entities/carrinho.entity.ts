@@ -14,4 +14,12 @@ export class CarrinhoEntity{
 
     @OneToMany(()=> ProdutosEntity, (produtos)=> produtos.carrinho, {cascade: true} )
     produtos: ProdutosEntity[]
+
+    addProdutos(produto: ProdutosEntity) {
+        if (this.produtos == null) {
+            this.produtos = new Array<ProdutosEntity>();
+        }
+        this.produtos.push(produto);
+   
+    }
 }
