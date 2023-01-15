@@ -1,5 +1,5 @@
 import { CarrinhoEntity } from 'src/carrinho/entities/carrinho.entity';
-import { Column, PrimaryGeneratedColumn, Entity, ManyToOne, JoinColumn} from 'typeorm'
+import { Column, Entity, ManyToOne, JoinColumn, PrimaryGeneratedColumn} from 'typeorm'
 import { CategoriaProdutoEnum } from '../utils/categoriaProduto.enum';
 
 @Entity('produtos')
