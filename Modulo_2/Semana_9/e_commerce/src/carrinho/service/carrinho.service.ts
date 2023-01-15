@@ -1,7 +1,9 @@
 import { Injectable } from "@nestjs/common";
 import { Inject } from "@nestjs/common/decorators";
+import { readFile, writeFile } from "fs/promises";
 import { ProdutosEntity } from "src/produtos/entities/produtos.entity";
 import { Repository } from "typeorm";
+import { CreatePayDto } from "../dto/createPay.dto";
 import { CarrinhoEntity } from "../entities/carrinho.entity";
 
 
@@ -57,5 +59,16 @@ export class CarrinhoService{
         await this.carrinhoRespository.save(carrinho)
         await this.produtoRepository.update(idProduto, {carrinho:carrinho})
 
+    }
+
+    async realizarPagamento(newCompra: CreatePayDto){
+        const compras = await this.getCompras()
+        await writeFile('comprasFeitas.json', JSON.stringify([...compras, newCompra]));
+    }
+
+    public async getCompras(){
+        const comprarInFile = await readFile('comprasFeitas.json', 'utf-8');
+        const compras = JSON.parse(comprarInFile);
+        return compras;
     }
 }
