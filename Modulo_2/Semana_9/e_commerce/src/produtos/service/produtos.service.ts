@@ -1,6 +1,7 @@
 import { Inject, Injectable } from "@nestjs/common";
 import { Repository } from "typeorm";
 import { ProdutosEntity } from "../entities/produtos.entity";
+import { CategoriaProdutoEnum } from "../utils/categoriaProduto.enum";
 
 @Injectable()
 export class ProdutosService{
@@ -22,4 +23,13 @@ export class ProdutosService{
         })
         return produto
     }
-}
+
+    async findByCategoria(categoria: number){
+        const produtos = await this.produtoRepository.find({
+            where: {
+                categoria:categoria
+            }
+        })
+        return produtos
+    }    
+   }
