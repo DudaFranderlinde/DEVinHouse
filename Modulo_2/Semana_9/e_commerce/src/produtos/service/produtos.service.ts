@@ -13,4 +13,13 @@ export class ProdutosService{
         const produtos = await this.produtoRepository.find()
         return produtos
     }
+
+    async findOne(id: number){
+        const produto = await this.produtoRepository.findOne({
+            where: {
+                id: id
+            }
+        })
+        return produto
+    }
 }
