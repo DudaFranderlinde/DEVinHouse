@@ -1,8 +1,9 @@
-import { Controller, Body, Get, HttpStatus, Res, Post, Param, UseGuards } from "@nestjs/common";
+import { Controller, Body, Get, HttpStatus, Res, Post, Param, UseGuards, Patch, Request, HttpException } from "@nestjs/common";
 import { Response } from "express";
 import { JwtAuthGuard } from "src/core/auth/guard/jwt-auth.guard";
 import { CreateTweetDTO } from "./dto/createTweets.dto";
 import { CreateUserDTO } from "./dto/createUser.dto";
+import { UpdatePasswordDto } from "./dto/updateUser.dto";
 import { TwitterService } from "./twitter.service";
 
 @Controller('twitter')
@@ -48,5 +49,26 @@ export class TwitterController{
     async findTweet(@Res() response: Response, @Param('id') id: number){
         const tweets = await this.service.findTweets(id)
         response.status(HttpStatus.OK).send(tweets)
+    }
+
+    @Patch('updatePassword')
+    async update(@Request() req, @Body() user: UpdatePasswordDto, @Res() response: Response){
+      try {
+        const userUpdate = await this.service.updatePassword(req.user.id, user)
+
+        if(userUpdate){
+          response.status(HttpStatus.OK).send({message: `Senha atualizada com sucesso!`})
+          return 
+        }
+
+        if(!userUpdate){
+        return response.status(HttpStatus.NOT_FOUND).send({message:`Informações inválidas!`})
+        }
+        response.status(HttpStatus.NOT_FOUND).send({message:`Nenhum usuário encontrado com o ID ${req.user.id}`})
+        
+      } catch (error) {
+        
+        throw new HttpException({ reason: error?.detail }, HttpStatus.BAD_REQUEST)
+      }
     }
 }

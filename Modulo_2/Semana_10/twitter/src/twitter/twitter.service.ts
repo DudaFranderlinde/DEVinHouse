@@ -4,6 +4,7 @@ import { resolve } from "path";
 import { Repository } from "typeorm";
 import { CreateTweetDTO } from "./dto/createTweets.dto";
 import { CreateUserDTO } from "./dto/createUser.dto";
+import { UpdatePasswordDto } from "./dto/updateUser.dto";
 import { TweetEntity } from "./entities/tweet.entity";
 import { UserEntity } from "./entities/user.entity";
 
@@ -125,8 +126,41 @@ export class TwitterService{
          }
         })
      }
+
+     async updatePassword(id: number, userUpdtade: UpdatePasswordDto): Promise<boolean>{
+        return new Promise(async (resolve, reject) => {
+            try {
+                const { senhaAtual, password, email } = userUpdtade
+                
+                const findUser = await this.userRepository.findOne({
+                    where:{
+                        id: id
+                    }
+                })
+                
+                if(email == findUser.email && await bcrypt.hash(senhaAtual, findUser.salt) == findUser.password){
+                    userUpdtade.password = await bcrypt.hash(password, findUser.salt)
+
+                    await this.userRepository.update(id, {password: userUpdtade.password})
+                    return resolve(true)
+                    
+                }
+
+                if(findUser == null){
+                    resolve(null)
+                    return
+                }
+
+                resolve(false)
+            } catch (error) {
+                reject(error)
+            }
+        })
+    }
     
     private async hashPassword(password: string, salt: string): Promise<string> {
         return bcrypt.hash(password, salt);
     }
+
+
 }
