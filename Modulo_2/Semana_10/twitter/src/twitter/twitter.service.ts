@@ -68,19 +68,39 @@ export class TwitterService{
     }
 
     async findMyTweets(idUser: number){
-        const user = await this.userRepository.find({
-            order:{
-                tweets:{
-                    createdAt: 'ASC'
+       return new Promise(async(resolve, reject) => {
+        try {
+            const user = await this.userRepository.find({
+                order:{
+                    tweets:{
+                        createdAt: 'ASC'
+                    }
+                },
+                where:{
+                    id: idUser
+                }, relations:{
+                    tweets:true
                 }
-            },
-            where:{
-                id: idUser
-            }, relations:{
-                tweets:true
+            })
+            resolve(user)
+        } catch (error) {
+            
+        }
+       })
+    }
+
+    async findHashtag(hashtag: string){
+        return new Promise(async(resolve, reject) => {
+            try {
+                const tweets = await this.tweetRepository.find();
+                const filtro = tweets.filter((elemento)=> elemento.text.toLocaleLowerCase().includes(hashtag.toLocaleLowerCase()));
+                resolve(filtro)
+            
+            } catch (error) {
+                reject(error)
             }
         })
-        resolve(user)
+    
     }
     
     private async hashPassword(password: string, salt: string): Promise<string> {
