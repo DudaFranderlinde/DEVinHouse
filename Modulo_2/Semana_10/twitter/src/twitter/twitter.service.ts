@@ -1,6 +1,7 @@
 import { Inject, Injectable } from "@nestjs/common";
 import * as bcrypt from 'bcrypt';
 import { Repository } from "typeorm";
+import { CreateTweetDTO } from "./dto/createTweets.dto";
 import { CreateUserDTO } from "./dto/createUser.dto";
 import { TweetEntity } from "./entities/tweet.entity";
 import { UserEntity } from "./entities/user.entity";
@@ -36,6 +37,22 @@ export class TwitterService{
             }
         })
 
+    }
+
+    async createTweet(createTweet: CreateTweetDTO, idUser:number){
+        return new Promise(async(resolve, reject) => {
+            try {
+                const {text} = createTweet;
+                const tweet = await this.tweetRepository.create()
+                tweet.text = text
+                tweet.user.id = idUser
+
+                const tweetCreated = await this.tweetRepository.save(tweet)
+                resolve(tweetCreated)
+            } catch (error) {
+                reject(error)
+            }
+        })
     }
 
     
