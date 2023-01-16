@@ -62,7 +62,15 @@ export class AuthService {
             const userCreated = await this.userRepository.save(user);
             delete user.password;
             delete user.salt;
-            resolve(userCreated);
+
+            const jwtPayload = {
+                id: user.id,
+                name: user.name,
+                fotoURL: user.fotoURL,
+                email: user.email
+            }
+            const token = await this.jwtService.sign(jwtPayload);
+            resolve( { token })
         })
     }
 
