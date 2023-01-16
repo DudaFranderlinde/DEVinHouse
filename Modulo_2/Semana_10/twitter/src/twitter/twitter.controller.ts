@@ -43,4 +43,10 @@ export class TwitterController{
         const tweets = await this.service.findHashtag(hashtag)
         response.status(HttpStatus.OK).send(tweets)
     }
+    
+    @Get('tweet/user')
+    async findTweet(@Res() response: Response, @Param('id') id: number){
+        const tweets = await this.service.findTweets(id)
+        response.status(HttpStatus.OK).send(tweets)
+    }
 }

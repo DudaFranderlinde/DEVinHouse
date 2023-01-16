@@ -102,6 +102,29 @@ export class TwitterService{
         })
     
     }
+
+    async findTweets(idUser: number){
+        return new Promise(async(resolve, reject) => {
+         try {
+             const tweet = await this.tweetRepository.find({
+                 where:{
+                     id: idUser
+                 }, relations:{
+                     user:true
+                 },select:{
+                    user:{
+                        id: true,
+                        name:true,
+                        email:true
+                    }
+                 }
+             })
+             resolve(tweet)
+         } catch (error) {
+             
+         }
+        })
+     }
     
     private async hashPassword(password: string, salt: string): Promise<string> {
         return bcrypt.hash(password, salt);
