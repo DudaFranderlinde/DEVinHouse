@@ -2,12 +2,31 @@ import { Body, Controller,Post, ValidationPipe, UseGuards, Get, Request, HttpExc
 import { HttpStatus } from '@nestjs/common/enums';
 import { AuthService } from './core/auth/auth.service';
 import { CredentialsDTO } from './core/auth/dto/credential.dto';
+import { GoogleOAuthGuard } from './core/auth/guard/google-oauth.guard';
 import { JwtAuthGuard } from './core/auth/guard/jwt-auth.guard';
 import { CreateUserDTO } from './twitter/dto/createUser.dto';
 
 @Controller()
 export class AppController {
   constructor(private readonly authService: AuthService) { }
+  @Get('/auth/with-google')
+  @UseGuards(GoogleOAuthGuard)
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  async googleAuth(@Request() req) {
+  }
+
+  @Get('/auth/google-redirect')
+  @UseGuards(GoogleOAuthGuard)
+  googleAuthRedirect(@Request() req) {
+    if (!req.user) {
+      return 'Sem usuário retornado do google';
+    }
+
+    return {
+      mensagem: 'Google Info',
+      user: req.user
+    }
+  }
 
   @UseGuards(JwtAuthGuard)
   @Get('/auth/me')
