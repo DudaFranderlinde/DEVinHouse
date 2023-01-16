@@ -1,5 +1,6 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import * as bcrypt from 'bcrypt';
+import { TweetEntity } from "./tweet.entity";
 
 @Entity({ name: 'users_twitter' })
 export class UserEntity {
