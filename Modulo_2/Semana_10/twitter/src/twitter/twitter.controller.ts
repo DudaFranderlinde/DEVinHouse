@@ -1,11 +1,12 @@
-import { Controller, Body, Get, HttpStatus, Res, Post, Param } from "@nestjs/common";
+import { Controller, Body, Get, HttpStatus, Res, Post, Param, UseGuards } from "@nestjs/common";
 import { Response } from "express";
+import { JwtAuthGuard } from "src/core/auth/guard/jwt-auth.guard";
 import { CreateTweetDTO } from "./dto/createTweets.dto";
 import { CreateUserDTO } from "./dto/createUser.dto";
-import { UserEntity } from "./entities/user.entity";
 import { TwitterService } from "./twitter.service";
 
 @Controller('twitter')
+@UseGuards(JwtAuthGuard)
 export class TwitterController{
     constructor(
         private service: TwitterService,
