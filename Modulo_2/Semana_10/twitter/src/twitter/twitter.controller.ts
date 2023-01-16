@@ -29,4 +29,9 @@ export class TwitterController{
         response.status(HttpStatus.OK).send(tweets)
 
     }
+
+    @Get('myTweets')
+    async find(){
+        
+    }
 }

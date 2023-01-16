@@ -1,5 +1,6 @@
 import { Inject, Injectable } from "@nestjs/common";
 import * as bcrypt from 'bcrypt';
+import { resolve } from "path";
 import { Repository } from "typeorm";
 import { CreateTweetDTO } from "./dto/createTweets.dto";
 import { CreateUserDTO } from "./dto/createUser.dto";
@@ -66,6 +67,21 @@ export class TwitterService{
         })
     }
 
+    async findMyTweets(idUser: number){
+        const user = await this.userRepository.find({
+            order:{
+                tweets:{
+                    createdAt: 'ASC'
+                }
+            },
+            where:{
+                id: idUser
+            }, relations:{
+                tweets:true
+            }
+        })
+        resolve(user)
+    }
     
     private async hashPassword(password: string, salt: string): Promise<string> {
         return bcrypt.hash(password, salt);
