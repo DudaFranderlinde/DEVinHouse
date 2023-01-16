@@ -22,4 +22,11 @@ export class TwitterController{
         response.status(HttpStatus.CREATED).send(tweet)
 
     }
+
+    @Get('tweets')
+    async findAll(@Res() response: Response){
+        const tweets = await this.service.findAll()
+        response.status(HttpStatus.OK).send(tweets)
+
+    }
 }

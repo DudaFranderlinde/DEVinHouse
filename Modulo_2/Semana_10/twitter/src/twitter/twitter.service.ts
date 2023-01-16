@@ -55,6 +55,17 @@ export class TwitterService{
         })
     }
 
+    async findAll(){
+        return new Promise(async(resolve, reject) => {
+            try {
+                const tweets = await this.tweetRepository.find();
+                resolve(tweets)
+            } catch (error) {
+                reject(error)
+            }
+        })
+    }
+
     
     private async hashPassword(password: string, salt: string): Promise<string> {
         return bcrypt.hash(password, salt);
