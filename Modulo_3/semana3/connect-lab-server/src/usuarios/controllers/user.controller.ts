@@ -4,12 +4,17 @@ import { JwtAuthGuard } from 'src/core/auth/guard/jwt-auth.guard';
 import { UpdatePasswordDto } from '../dto/updatePassword.dto';
 import { UserEntity } from '../entities/usuario.entity';
 import { UserService } from '../service/user.service';
+import { ApiOperation } from '@nestjs/swagger';
+import { UsuariosDocumentantion } from '../documentation';
+
+const {ApiOperation:apiOpe}= UsuariosDocumentantion
 
 @Controller('users')
 @UseGuards(JwtAuthGuard)
 export class UserController {
     constructor(private service: UserService){}
 
+    @ApiOperation(apiOpe.profile)
     @Get('profile')
     async me(@Request() req, @Res() response: Response): Promise<UserEntity> {
       try {
@@ -28,6 +33,7 @@ export class UserController {
         
     } 
     
+    @ApiOperation(apiOpe.updatePassword)
     @Patch('updatePassword')
     async update(@Request() req, @Body() user: UpdatePasswordDto, @Res() response: Response){
       try {

@@ -4,7 +4,12 @@ import { response, Response } from 'express';
 import { DevicesService } from '../service/dispositivo.service';
 import { DispositivosEntity } from '../entities/dispositivo.entity';
 import { AddDeviceDto } from '../dto/addDevice.dto';
+import { ApiOperation, ApiQuery, ApiTags } from '@nestjs/swagger';
+import { DispositivosDocumentation } from '../documentation';
 
+const {ApiOperation:apiOpe} = DispositivosDocumentation
+
+ApiTags('devices')
 @Controller('devices')
 @UseGuards(JwtAuthGuard)
 export class DevicesController{
@@ -12,6 +17,8 @@ export class DevicesController{
         private service: DevicesService
     ){}
 
+    @ApiOperation(apiOpe.getDetails)
+    @ApiQuery({name: 'id'})
     @Get('/detail')
     async getDetails(@Query('id') id: number, @Res() response: Response): Promise<DispositivosEntity>{
         try {
@@ -30,6 +37,8 @@ export class DevicesController{
         }
     }
 
+    @ApiOperation(apiOpe.getAll)
+    @ApiQuery({name: 'local'})
     @Get('userDevices')
     async getAll(@Query('local') local: string, @Request() req, @Res() response: Response): Promise<DispositivosEntity>{
         try {
@@ -43,6 +52,7 @@ export class DevicesController{
         }
     }
 
+    @ApiOperation(apiOpe.addDevice)
     @Patch('addDeviceUser')
     async addDevice(@Body() info: AddDeviceDto, @Request() req, @Res() response: Response){
         try {
