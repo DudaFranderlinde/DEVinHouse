@@ -42,6 +42,61 @@ export const UsuariosDocumentantion = {
         }
     },
     ApiResponse: {
+        updatePassword: {
+            Success: {
+                status: 200,
+                description:
+                  'Senha alterada com sucesso!',
+                schema: {
+                  example: {
+                    code: 200,
+                    message:
+                      'Senha alterada com sucesso!',
+                  },
+                },
+            },
+            NotFound: {
+                status: 404,
+                description:
+                  'ID de usuário não encontrado nos registros.',
+                schema: {
+                  example: {
+                    statusCode: 404,
+                    message:
+                      'ID de usuário não encontrado nos registros.',
+                    error: 'Not Found',
+                  },
+                },
+            },
 
+
+        },
+        profile: {
+            Success: {
+                status: 200,
+                description:
+                  'Informações encontradas com sucesso!',
+                schema: {
+                  example: {
+                    code: 200,
+                    message:
+                      'Informações encontradas com sucesso!',
+                  },
+                },
+            },
+            NotFound: {
+                status: 404,
+                description:
+                  'ID de usuário não encontrado nos registros.',
+                schema: {
+                  example: {
+                    statusCode: 404,
+                    message:
+                      'ID de usuário não encontrado nos registros.',
+                    error: 'Not Found',
+                  },
+                },
+            },
+        }
     }
 }

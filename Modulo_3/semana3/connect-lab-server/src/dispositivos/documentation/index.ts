@@ -32,6 +32,86 @@ export const DispositivosDocumentation = {
         }
     },
     ApiResponse: {
-
+        getDetails: {
+            Success: {
+                status: 200,
+                description:
+                  'Informações encontradas com sucesso!',
+                schema: {
+                  example: {
+                    code: 200,
+                    message:
+                      'Informações encontradas com sucesso!',
+                  },
+                },
+            },
+            NotFound: {
+                status: 404,
+                description:
+                  'ID de dispositvo não encontrado nos registros.',
+                schema: {
+                  example: {
+                    statusCode: 404,
+                    message:
+                      'ID de dispositvo não encontrado nos registros.',
+                    error: 'Not Found',
+                  },
+                },
+            },
+        },
+        getAll: {
+            Success: {
+                status: 200,
+                description:
+                  'Dispositivos encontrados!',
+                schema: {
+                  example: {
+                    code: 200,
+                    message:
+                      'Dispositivos encontrados!!',
+                  },
+                },
+            },
+            NotFound: {
+                status: 404,
+                description:
+                  'ID de dispositvo não encontrado nos registros.',
+                schema: {
+                  example: {
+                    statusCode: 404,
+                    message:
+                      'ID de dispositvo não encontrado nos registros.',
+                    error: 'Not Found',
+                  },
+                },
+            },
+        },
+        addDevice: {
+            Success: {
+                status: 200,
+                description:
+                  'Dispositivo vinculado com sucesso!',
+                schema: {
+                  example: {
+                    code: 200,
+                    message:
+                      'Dispositivo vinculado com sucesso!!',
+                  },
+                },
+            },
+            NotFound: {
+                status: 404,
+                description:
+                  'ID de dispositvo não encontrado nos registros.',
+                schema: {
+                  example: {
+                    statusCode: 404,
+                    message:
+                      'ID de dispositvo não encontrado nos registros.',
+                    error: 'Not Found',
+                  },
+                },
+            },
+        },
     }
 }

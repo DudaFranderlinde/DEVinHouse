@@ -4,10 +4,10 @@ import { response, Response } from 'express';
 import { DevicesService } from '../service/dispositivo.service';
 import { DispositivosEntity } from '../entities/dispositivo.entity';
 import { AddDeviceDto } from '../dto/addDevice.dto';
-import { ApiOperation, ApiQuery, ApiTags } from '@nestjs/swagger';
+import { ApiOperation, ApiQuery, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { DispositivosDocumentation } from '../documentation';
 
-const {ApiOperation:apiOpe} = DispositivosDocumentation
+const {ApiOperation:apiOpe, ApiResponse:apiRes} = DispositivosDocumentation
 
 ApiTags('devices')
 @Controller('devices')
@@ -18,6 +18,8 @@ export class DevicesController{
     ){}
 
     @ApiOperation(apiOpe.getDetails)
+    @ApiResponse(apiRes.getDetails.Success)
+    @ApiResponse(apiRes.getDetails.NotFound)
     @ApiQuery({name: 'id'})
     @Get('/detail')
     async getDetails(@Query('id') id: number, @Res() response: Response): Promise<DispositivosEntity>{
@@ -38,6 +40,8 @@ export class DevicesController{
     }
 
     @ApiOperation(apiOpe.getAll)
+    @ApiResponse(apiRes.getAll.Success)
+    @ApiResponse(apiRes.getAll.NotFound)
     @ApiQuery({name: 'local'})
     @Get('userDevices')
     async getAll(@Query('local') local: string, @Request() req, @Res() response: Response): Promise<DispositivosEntity>{
@@ -53,6 +57,8 @@ export class DevicesController{
     }
 
     @ApiOperation(apiOpe.addDevice)
+    @ApiResponse(apiRes.addDevice.Success)
+    @ApiResponse(apiRes.addDevice.NotFound)
     @Patch('addDeviceUser')
     async addDevice(@Body() info: AddDeviceDto, @Request() req, @Res() response: Response){
         try {
