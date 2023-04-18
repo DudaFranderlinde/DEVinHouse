@@ -1,73 +1,206 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Connect_Lab_Backend
+API nestjs utilizando typeorm
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Primeiros passos
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+Para instalar as dependencias é preciso executar o comando **npm**:
 
-## Description
-
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
-## Installation
-
-```bash
+```
 $ npm install
 ```
 
-## Running the app
+## Comandos
 
-```bash
-# development
-$ npm run start
+No diretório do projeto, você pode executar:
 
-# watch mode
+### **dev**
+
+Executa o aplicativo no modo de desenvolvimento. Que ficará exposto em: http://localhost:3000
+
+```
 $ npm run start:dev
-
-# production mode
-$ npm run start:prod
 ```
 
-## Test
+## Configurações
 
-```bash
-# unit tests
-$ npm run test
+Para rodar o projeto é preciso criar o arquivo .env na raiz do projeto, adicionar a uri de conexão do mongo e a porta que será executado, além da secret que servirá para gerar os tokens de autenticação.
 
-# e2e tests
-$ npm run test:e2e
+```
+# JWT
+JWT_SECRET
 
-# test coverage
-$ npm run test:cov
+# POSTGRESQL
+DB_DIALECT=postgres
+DB_HOST
+DB_PORT
+DB_USER
+DB_PASS
+DB_NAME=intelbras
 ```
 
-## Support
+## Endpoints disponiveis
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+### Criar Usuário:
 
-## Stay in touch
+```
+POST: http://localhost:3000/auth/signup
+Headers: {
+	"Content-Type": "application/json"
+}
+Body{
+"nome": Nome Usuário",
+	"email": "usuario@gmail.com",
+	"senha": "12345678",
+	"confirmaSenha": "12345678",
+	"endereco": {
+		"cep":"12121-000",
+		"logradouro": "Rua sebastião",
+		"numero": "12",
+		"bairro":"São Jorge",
+		"cidade":"Luares",
+		"estado": "SC"
+	}
+}
+```
+**Resultado:**
+```
+{
+	"message": "Cadastro realizado."
+}
+```
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+### Fazer Login: 
+```
+POST: http://localhost:3000/auth/signin
+Headers: {
+	"Content-Type": "application/json"
+}
+Body{
+	"email": "usuario@gmail.com",
+	"senha": "12345678"
+}
+```
+**Resultado:**
+```
+{
+	"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Mywibm9tZSI6IkVkdWFyZGEiLCJmb3RvVVJMIjoiaHR0cHM6Ly91c2VyLWltYWdlcy5naXRodWJ1c2VyY29udGVudC5jb20vODM3NjQ3MDEvMjEwMjQ5Nzg2LTJiMmJlOTg5LWI3ZWQtNDFlZS04NTZmLTg3NmRkODAwMzBlMi5wbmciLCJlbWFpbCI6ImVkYUBnbWFpbC5jb20iLCJpYXQiOjE2NzM3ODQ4NTYsImV4cCI6MTY3Mzc4NTIxNn0.4bCSb7OnW-gvdBan0DNkuEqQsFBcHGi8KnYkiB9tAl8"
+}
+```
 
-## License
+### Modificação de senha:
+```
+PACTH: http://localhost:3000/users/updatePassword
+Headers{
+	"Content-Type": "application/json"
+  "Authorization": "Bearer token"
+}
+Body{
+"email": "usuario@gmail.com",
+	"senhaAtual": "12345678",
+	"senha": "11122233",
+	"confirmaNovaSenha":"11122233"
+}
+```
+**Resultado:**
+```
+{
+  message: `Senha atualizada com sucesso!`
+}
+```
 
-Nest is [MIT licensed](LICENSE).
+### Perfil: 
+```
+GET: http://localhost:3000/users/profile
+Headers{
+  "Content-Type": "application/json"
+  "Authorization": "Bearer token"
+}
+```
+
+#### Resultado
+```
+{
+	"nome": "Nome do usuário",
+	"fotoURL": "https://user-images.githubusercontent.com/83764701/210249786-2b2be989-b7ed-41ee-856f-876dd80030e2.png",
+	"email": "usuario@gmail.com",
+	"endereco": {
+		"id": 1,
+		"cep": "12121-000",
+		"logradouro": "Rua sebastião",
+		"numero": "12",
+		"bairro": "São Jorge",
+		"cidade": "Luares",
+		"estado": "SC"
+	}
+}
+```
+
+### Listar Dispositivos do Usuário:
+```
+GET: http://localhost:3000/devices/userDevices/?local
+Headers{
+  "Content-Type": "application/json"
+  "Authorization": "Bearer token"
+}
+```
+
+#### Resultado
+```
+[
+  {
+		"id": 13,
+		"nome": "Detector de Fumaça Smart Intelbras",
+		"tipo": "Detector",
+		"fabricante": "Intelbras",
+		"status": "Desligado",
+		"info": "Protocolo de comunicação ZigBee",
+		"ip": "109.42.103.133",
+		"enderecoMAC": "9F-56-EF-38-02-CD",
+		"local": "sala"
+	}
+]
+```
+
+### Vincular um dispositivo com usuário:
+```
+PATCH: http://localhost:3000/devices/addDeviceUser/
+Headers{
+  "Content-Type": "application/json"
+  "Authorization": "Bearer token"
+}
+Body{
+	"idDevice": 13,
+	"local": "sala"
+}
+```
+
+#### Resultado
+```
+{
+	"message": "Dispositivo vinculado com sucesso!"
+}
+```
+
+### Listar Detalhes de um dispositivo:
+```
+GET: http://localhost:3000/devices/detail?id
+Headers{
+
+}
+```
+
+#### Resultado
+```
+{
+	"id": 3,
+	"nome": "Lâmpada LED Wi-Fi Smart",
+	"tipo": "Lâmpada",
+	"fabricante": "Intelbras",
+	"status": "Desligado",
+	"info": "Lâmpada: 10W",
+	"ip": "244.233.94.148",
+	"enderecoMAC": "E7-A0-4D-C4-3D-49",
+	"local": null
+}
+```
+
