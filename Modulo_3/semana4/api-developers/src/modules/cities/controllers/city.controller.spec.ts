@@ -79,4 +79,15 @@ describe('CountryController', () => {
     });
   });
 
+  describe('deleteCity', () => {
+    it('deveria excluir um registro de cidade com sucesso', async () => {
+      const city = TestStatic.cityData();
+      const anyValue = 'anyValue' as unknown as number;
+
+      mockService.deleteCity.mockReturnValue(city);
+      await cityController.deleteCity(anyValue);
+
+    });
+  });
+
 })
