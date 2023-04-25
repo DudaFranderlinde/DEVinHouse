@@ -46,4 +46,19 @@ describe('CountryController', () => {
     });
   });
 
+  describe('updateCity', () => {
+    it('deveria atualizar um registro de cidade com sucesso', async () => {
+      const anyValue = 'anyValue' as unknown as number;
+      const cityDto = TestStatic.cityDto();
+      const city = TestStatic.cityData();
+
+      mockService.updateCity.mockReturnValue(city);
+      const saveCountry = await cityService.updateCity(anyValue, cityDto);
+      expect(saveCountry).toMatchObject({
+        name: cityDto.name,
+        state_id: cityDto.state_id,
+      });
+    });
+  });
+
   }) 
