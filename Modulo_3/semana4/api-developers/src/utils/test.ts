@@ -1,5 +1,5 @@
 import { CreateCountryDto, CreateStateDto } from 'src/core/dtos';
-import { CountryEntity, StateEntity } from 'src/core/entities';
+import { CityEntity, CountryEntity, StateEntity } from 'src/core/entities';
 
 export class TestStatic {
   static countryData(): CountryEntity {
@@ -78,5 +78,17 @@ export class TestStatic {
     stateBodyDto.country_id = 1;
 
     return stateBodyDto;
+  }
+
+  static cityData(): CityEntity {
+    const city = new CityEntity();
+    city.id = 1;
+    city.state_id = this.stateData().id;
+    city.state = this.stateData();
+    city.name = 'Intelbras';
+    city.createdAt = new Date(`2023-02-14 12:06:12.090`);
+    city.updatedAt = new Date(`2023-02-18 12:06:12.090`);
+    city.deletedAt = null;
+    return city;
   }
 }
