@@ -1,4 +1,4 @@
-import { CreateCountryDto, CreateStateDto } from 'src/core/dtos';
+import { CreateCityDto, CreateCountryDto, CreateStateDto } from 'src/core/dtos';
 import { CityEntity, CountryEntity, StateEntity } from 'src/core/entities';
 
 export class TestStatic {
@@ -90,5 +90,11 @@ export class TestStatic {
     city.updatedAt = new Date(`2023-02-18 12:06:12.090`);
     city.deletedAt = null;
     return city;
+  }
+
+  static cityDto(): CreateCityDto {
+    const cityDto = new CreateCityDto();
+    cityDto.name = 'Palhoça';
+    cityDto.state_id = 1;
   }
 }

@@ -31,7 +31,7 @@ describe('CountryController', () => {
   });
 
   describe('getById', () => {
-    it('deveria retornar o resultado da busca e devolver um registro de dados de país', async () => {
+    it('deveria retornar o resultado da busca e devolver um registro de dados de  cidade', async () => {
       const city = TestStatic.cityData();
       mockService.findById.mockReturnValue(city);
       const foundCity = await cityController.getById(city.id);
@@ -50,5 +50,18 @@ describe('CountryController', () => {
     });
   })
 
+  describe('createCity', () => {
+    it('deveria criar um registro de cidade com sucesso', async () => {
+      const cityDto = TestStatic.cityDto();
+      const city = TestStatic.cityData();
+
+      mockService.createCity.mockReturnValue(city);
+      const saveCountry = await cityController.create(cityDto);
+      expect(saveCountry).toMatchObject({
+        name: cityDto.name,
+        state_id: cityDto.state_id,
+      });
+    });
+  });
 
 })

@@ -57,6 +57,24 @@ export class CityController {
     }
   }
 
+  @Post('createCity')
+  async createCity(@Body() cityDTO: CreateCityDto): Promise<string> {
+    try {
+      if (await this.cityService.findCity(cityDTO)) {
+        throw new HttpException(
+          { reason: 'Cidade já cadastrada!' },
+          HttpStatus.CONFLICT,
+        );
+      }
+      return await this.cityService.createCity(cityDTO);
+    } catch (error) {
+      throw new HttpException(
+        { reason: 'Alguma informação está incorreta, verifique novamente!' },
+        HttpStatus.BAD_REQUEST,
+      );
+    }
+  }
+
   @Delete(':id')
   async deleteCity(@Param('id') id: number): Promise<string> {
     try {

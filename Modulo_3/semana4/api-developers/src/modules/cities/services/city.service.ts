@@ -57,4 +57,19 @@ export class CityService {
 
     return updatedCity;
   }
+
+  async findCity(cityDTO: CreateCityDto): Promise<CityEntity[]> {
+    const foundCity = await this.cityRepository.findCityBy(
+      cityDTO.name,
+      cityDTO.state_id,
+    );
+
+    if (!foundCity) {
+      throw new NotFoundException(
+        'Não encontramos nenhuma cidade com estes dados',
+      );
+    }
+
+    return foundCity;
+  }
 }
