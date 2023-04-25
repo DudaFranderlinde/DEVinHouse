@@ -35,7 +35,15 @@ describe('CountryController', () => {
       expect(foundCity).toMatchObject({ id: city.id });
       expect(mockService.findById).toHaveBeenCalledTimes(1);
     });
-    })
-  
-  
+  });
+
+  describe('createCity', () => {
+    it('deveria criar um registro de cidade com sucesso', async () => {
+      const cityDto = TestStatic.cityDto();
+      const city = TestStatic.cityData();
+
+      mockService.createCity.mockReturnValue(city);
+    });
+  });
+
   }) 

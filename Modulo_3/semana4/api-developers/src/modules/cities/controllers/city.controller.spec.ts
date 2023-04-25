@@ -56,7 +56,7 @@ describe('CountryController', () => {
       const city = TestStatic.cityData();
 
       mockService.createCity.mockReturnValue(city);
-      const saveCountry = await cityController.create(cityDto);
+      const saveCountry = await cityController.createCity(cityDto);
       expect(saveCountry).toMatchObject({
         name: cityDto.name,
         state_id: cityDto.state_id,
