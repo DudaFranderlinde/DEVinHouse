@@ -32,7 +32,7 @@ describe('CountryController', () => {
 
   describe('getById', () => {
     it('deveria retornar o resultado da busca e devolver um registro de dados de país', async () => {
-      const city = TestStatic.countryData();
+      const city = TestStatic.cityData();
       mockService.findById.mockReturnValue(city);
       const foundCity = await cityController.getById(city.id);
       expect(foundCity).toMatchObject({ id: city.id });
