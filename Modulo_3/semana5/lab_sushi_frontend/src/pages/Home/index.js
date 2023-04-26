@@ -5,6 +5,7 @@ import { priceFormat } from "../../utils/priceFormat";
 import ProductCard from "../../components/ProductCard";
 import {productsAction, productsActions} from "../../actions/product.action";
 import { toast } from "react-toastify";
+import Menu from "../../components/Menu";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -32,6 +33,7 @@ const Home = () => {
 
   return (
     <div>
+      <Menu/>
       <div className="main-container">
         <div data-testid="products-list" className="products-list">
           {products.map((product) => (
