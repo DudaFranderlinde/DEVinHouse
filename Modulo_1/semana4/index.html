@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Tecno Bank</title>
+</head>
+<body>
+
+    <main>
+        
+        <nav>
+            <div class="contaneir-nav">
+                <h1>Tecno Bank</h1>
+            </div>
+        </nav>
+
+        <form id = "form" class="sacar-depo">
+            <div class="container-dinheiro">
+                <select id="conta"></select>
+                <input id="senha"type="text" placeholder="Senha:">
+                <input id="valor" placeholder="Valor:">
+                <select id="operacao">
+                    <option value="0">(Selecione)</option>
+                    <option value="1">Sacar</option>
+                    <option value="2">Depositar</option>
+                </select>
+                <div>
+                    <button>Confirmar</button>
+                </div>
+                <p id="p"></p>
+            </div>
+        </form>
+
+    </main>
+    
+    
+</body>
+<script src="index.js"></script>
+</html>

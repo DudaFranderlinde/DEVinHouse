@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+*{
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+
+}
+
+nav div{
+    background-color: rgb(57, 8, 103);
+    color: gainsboro;
+    height: 50px;
+    width: 100%;
+    display: flex;
+    position: fixed;
+    top: 0;
+}
+
+nav div h1{
+    width: 100%;
+    text-align: center;
+    padding-top: 1.5vh;
+}
+
+.container-dinheiro{
+    margin-top: 5em;
+    margin-left: 1em;
+    margin-right: 0;
+    
+}
+
+.container-dinheiro select{
+    height: 5vh;
+    width: 20vh;
+    background-color: rgb(250, 241, 255);
+    color: black;
+}
+
+.container-dinheiro input{
+    height: 4.5vh;
+    width: 20vh;
+    background-color: rgb(250, 241, 255);
+    color: black;
+    border: 0.9px solid black;
+}
+
+ button{
+    height: 5vh;
+    width: 20vh;
+
+    margin-top: 10px;
+    align-items: center;
+    background-color:  rgb(57, 8, 103);
+    color: gainsboro;
+    border: 0.9px solid black;
+    border-radius: 5px;
+}
+
+.sacar-depo p{ 
+  
+  padding-top: 5px;
+}
