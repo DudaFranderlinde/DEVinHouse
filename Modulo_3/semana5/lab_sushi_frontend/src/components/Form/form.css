@@ -1,0 +1,53 @@
+.form {
+    margin: 20px auto;
+    border: 1px solid #8586C9;
+    border-radius: 15px;
+    background-color: #FFFFFF;
+}
+
+.form h3{
+    color: #1E26BE;
+}
+
+.divMargin {
+    margin: 35px;
+}
+
+.divMargin div {
+    padding-top: 30px;
+}
+
+.divMargin label {
+    color: #8586C9;
+    font-weight: 600;
+    font-size: small;
+}
+
+.divMargin input, textarea {
+    width: 100%;
+    margin-top: 0;
+    border: 0;
+    border-bottom: 2px solid #8586C9;
+    outline: 0;
+    font-size: 16px;
+    color: #3D3D3F;
+    font-weight: 600;
+    transition: 0.5s ease-in-out;
+}
+
+.divMargin textarea {
+    height: 60px;
+    resize: none;
+}
+
+.divMargin button {
+    background-color: #1E26BE;
+    color: #FFFFFF;
+    font-weight: 600;
+    width: 100%;
+    outline: 0;
+    border: 0;
+    border-radius: 5px;
+    height: 40px;
+    margin-top: 20px;
+}
