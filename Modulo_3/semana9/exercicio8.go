@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"labmath"
+	"semana9/labmath/labmath"
 )
 
 
